@@ -1,32 +1,93 @@
 .navbar {
     background-color: #007bff;
-    padding: 15px 20px;
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: white;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.navbar h1:hover {
+    color: #dfe9ff;
 }
 
 .navLinks {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     list-style: none;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 .navLinks a {
     color: white;
     text-decoration: none;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navLinks a:hover {
-    text-decoration: underline;
+    background-color: white;
+    color: #007bff;
+    text-decoration: none;
 }
 
-.navbar h1 {
-    margin: 0;
-    font-size: 20px;
+.navLinks button {
+    background-color: white;
+    color: #007bff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navLinks button:hover {
+    background-color: #0056b3;
+    color: white;
+    transform: scale(1.05);
+}
+
+.navLinks button:active {
+    transform: scale(1);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .navLinks {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .navLinks a, .navLinks button {
+        width: 100%;
+        text-align: center;
+    }
 }

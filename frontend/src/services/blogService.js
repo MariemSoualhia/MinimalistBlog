@@ -1,7 +1,13 @@
 import api from "../utils/api";
+import axios from "axios";
 
-export const getBlogs = async () => {
-  const response = await api.get("/blogs");
+export const getBlogs = async (category = "All") => {
+  const params = category && category !== "All" ? { category } : {};
+  const { data } = await api.get("/blogs", { params });
+  return data;
+};
+export const getMyBlogs = async () => {
+  const response = await api.get("/blogs/myblogs");
   return response.data;
 };
 

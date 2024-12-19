@@ -12,6 +12,8 @@ import CreateBlog from "./pages/CreateBlog";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
+import MyBlogs from "./pages/MyBlogs";
+import Profile from "./pages/Profile";
 import { useUser } from "./context/UserContext";
 
 const App = () => {
@@ -39,6 +41,22 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <CreateBlog />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/myblogs"
+            element={
+              <ProtectedRoute>
+                <MyBlogs />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
               </ProtectedRoute>
             }
           />

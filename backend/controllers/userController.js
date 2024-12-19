@@ -33,6 +33,7 @@ const loginUser = async (req, res) => {
       _id: user._id,
       username: user.username,
       email: user.email,
+      profilePicture: user.profilePicture,
       token: generateToken(user._id),
     });
   } else {
@@ -48,10 +49,60 @@ const getUserProfile = async (req, res) => {
       _id: user._id,
       username: user.username,
       email: user.email,
+      profilePicture: user.profilePicture,
     });
   } else {
     res.status(404).json({ message: "User not found" });
   }
 };
 
-module.exports = { registerUser, loginUser, getUserProfile };
+const updateUserProfile = async (req, res) => {
+  const { username, email } = req.body;
+
+  try {
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.username = username || user.username;
+    user.email = email || user.email;
+
+    const updatedUser = await user.save();
+
+    res.status(200).json({
+      _id: updatedUser._id,
+      username: updatedUser.username,
+      email: updatedUser.email,
+      profilePicture: updatedUser.profilePicture, // Assuming the model has this field
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Error updating profile", error });
+  }
+};
+
+const updateProfilePicture = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.profilePicture = req.file ? req.file.filename : "";
+    await user.save();
+
+    res.status(200).json({ profilePicture: user.profilePicture });
+  } catch (error) {
+    res.status(500).json({ message: "Error updating profile picture", error });
+  }
+};
+
+module.exports = {
+  registerUser,
+  loginUser,
+  getUserProfile,
+  updateUserProfile,
+  updateProfilePicture,
+};

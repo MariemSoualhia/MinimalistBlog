@@ -8,8 +8,11 @@ const CreateBlog = () => {
   const { user, token } = useUser();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("General"); // Default category
   const navigate = useNavigate();
+
+  // Predefined categories
+  const categories = ["General", "Tech", "Health", "Lifestyle", "Finance"];
 
   if (!user) {
     return <p>Please log in to create a blog.</p>;
@@ -47,12 +50,13 @@ const CreateBlog = () => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       ></textarea>
-      <input
-        type="text"
-        placeholder="Category"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      />
+      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        {categories.map((cat) => (
+          <option key={cat} value={cat}>
+            {cat}
+          </option>
+        ))}
+      </select>
       <button type="submit">Submit</button>
     </form>
   );

@@ -1,0 +1,140 @@
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.blogList {
+    list-style: none;
+    padding: 0;
+}
+
+.blogItem {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+}
+
+.blogItem h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #007bff;
+}
+
+.blogItem p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.actions button:first-child {
+    background-color: #007bff;
+    color: white;
+}
+
+.actions button:first-child:hover {
+    background-color: #0056b3;
+}
+
+.actions button:last-child {
+    background-color: #dc3545;
+    color: white;
+}
+
+.actions button:last-child:hover {
+    background-color: #a71d2a;
+}
+
+/* Modal Styles */
+.modal {
+    width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #333;
+}
+
+.form input,
+.form textarea {
+    display: block;
+    width: 98%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.modalActions {
+    display: flex;
+    gap: 10px;
+}
+
+.modalActions button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.modalActions button:first-child {
+    background-color: #007bff;
+    color: white;
+}
+
+.modalActions button:first-child:hover {
+    background-color: #0056b3;
+}
+
+.modalActions button:last-child {
+    background-color: #6c757d;
+    color: white;
+}
+
+.modalActions button:last-child:hover {
+    background-color: #5a6268;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
