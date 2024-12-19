@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./Navbar.module.css";
+import { useUser } from "../context/UserContext";
+import styles from "./Navbar.module.css"; // Import CSS Module
 
 const Navbar = () => {
+  const { user, logout } = useUser();
+
   return (
     <nav className={styles.navbar}>
       <h1>MinimalistBlog</h1>
@@ -10,9 +13,25 @@ const Navbar = () => {
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/create">Create Blog</Link>
-        </li>
+        {user ? (
+          <>
+            <li>
+              <Link to="/create">Create Blog</Link>
+            </li>
+            <li>
+              <button onClick={logout}>Logout</button>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );

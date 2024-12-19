@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const blogRoutes = require("./routes/blogRoutes");
+const userRoutes = require("./routes/userRoutes");
 const errorHandler = require("./middleware/errorHandler");
 const cors = require("cors");
 
@@ -19,7 +20,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/blogs", blogRoutes);
-
+app.use("/api/users", userRoutes);
 // Error Handler
 app.use(errorHandler);
 

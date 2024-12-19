@@ -1,0 +1,102 @@
+.page {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.page h1 {
+    margin-bottom: 15px;
+    font-size: 28px;
+    color: #333;
+}
+
+.page p {
+    line-height: 1.6;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.author {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.author h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.author p {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.comments {
+    margin-top: 20px;
+}
+
+.comments h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.comment {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.comment strong {
+    color: #007bff;
+    font-size: 15px;
+}
+
+.form {
+    margin-top: 20px;
+}
+
+.form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.form button:hover {
+    background-color: #0056b3;
+}
+
+.loading {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+}

@@ -1,18 +1,36 @@
 import React, { useState } from "react";
-import { createBlog } from "../services/blogService";
+import { useUser } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
-import styles from "./CreateBlog.module.css";
+import api from "../utils/api";
+import styles from "./CreateBlog.module.css"; // Import CSS Module
 
 const CreateBlog = () => {
+  const { user, token } = useUser();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
   const navigate = useNavigate();
 
+  if (!user) {
+    return <p>Please log in to create a blog.</p>;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createBlog({ title, content, category });
-    navigate("/");
+    try {
+      // Send the request to create a blog
+      await api.post(
+        "/blogs",
+        { title, content, category }, // Payload
+        { headers: { Authorization: `Bearer ${token}` } } // Token in headers
+      );
+
+      // Redirect to home after successful creation
+      navigate("/");
+    } catch (error) {
+      console.error("Error creating blog:", error);
+      alert("Error creating blog. Please try again.");
+    }
   };
 
   return (

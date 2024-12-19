@@ -3,7 +3,7 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+    max-width: 400px;
     margin: 20px auto;
 }
 
@@ -11,23 +11,16 @@
     margin-bottom: 20px;
     font-size: 24px;
     color: #222;
-    text-align: center;
 }
 
-.form input,
-.form textarea {
+.form input {
     display: block;
-    width: 100%;
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 14px;
-}
-
-.form textarea {
-    resize: vertical; /* Allow resizing vertically */
-    height: 100px;
+    width: 100%;
 }
 
 .form button {
@@ -39,7 +32,6 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: bold;
 }
 
 .form button:hover {

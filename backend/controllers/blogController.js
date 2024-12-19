@@ -9,20 +9,36 @@ const getBlogs = async (req, res) => {
 // Get a single blog by ID
 const getBlogById = async (req, res) => {
   try {
-    const blog = await Blog.findById(req.params.id);
-    if (!blog) return res.status(404).json({ message: "Blog not found" });
+    const blog = await Blog.findById(req.params.id)
+      .populate("user", "username email") // Populate the blog's author
+      .populate("comments.user", "username email"); // Populate the user for each comment
+
+    if (!blog) {
+      return res.status(404).json({ message: "Blog not found" });
+    }
+
     res.json(blog);
   } catch (error) {
-    res.status(400).json({ message: "Invalid ID" });
+    res.status(500).json({ message: "Error fetching blog details", error });
   }
 };
 
 // Create a new blog
+// Create a new blog
 const createBlog = async (req, res) => {
   try {
-    const blog = new Blog(req.body);
-    const newBlog = await blog.save();
-    res.status(201).json(newBlog);
+    const { title, content, category } = req.body;
+
+    // Attach the authenticated user's ID
+    const blog = new Blog({
+      title,
+      content,
+      category,
+      user: req.user._id, // User ID from the token
+    });
+
+    const savedBlog = await blog.save();
+    res.status(201).json(savedBlog);
   } catch (error) {
     res.status(400).json({ message: "Error creating blog", error });
   }
@@ -51,5 +67,28 @@ const deleteBlog = async (req, res) => {
     res.status(400).json({ message: "Error deleting blog", error });
   }
 };
+const addCommentToBlog = async (req, res) => {
+  const { text } = req.body;
 
-module.exports = { getBlogs, getBlogById, createBlog, updateBlog, deleteBlog };
+  const blog = await Blog.findById(req.params.id);
+  if (blog) {
+    const comment = {
+      user: req.user._id,
+      text,
+    };
+    blog.comments.push(comment);
+    await blog.save();
+    res.status(201).json(blog);
+  } else {
+    res.status(404).json({ message: "Blog not found" });
+  }
+};
+
+module.exports = {
+  getBlogs,
+  getBlogById,
+  createBlog,
+  updateBlog,
+  deleteBlog,
+  addCommentToBlog,
+};

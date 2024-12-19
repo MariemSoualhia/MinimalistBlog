@@ -24,3 +24,7 @@ export const deleteBlog = async (id) => {
   const response = await api.delete(`/blogs/${id}`);
   return response.data;
 };
+export const registerUser = async (data) => {
+  const response = await api.post("/users/register", data);
+  return response.data;
+};
