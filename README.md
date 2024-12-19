@@ -27,7 +27,27 @@ Welcome to **MinimalistBlog** – a MERN (MongoDB, Express, React, Node.js) appl
 
 ## Screenshots
 
+### Home Page
+
+Browse blogs with the option to filter by categories.
+
+![Home Page](./public/home.png)
+
 ---
+
+### Blog Details
+
+View blog details, including the author and comments section.
+
+![Blog Details](./public/details.png)
+
+---
+
+### My Blogs
+
+Manage your blogs in the user dashboard.
+
+## ![My Blogs](./public/myblogs.png)
 
 ## Technologies Used
 
