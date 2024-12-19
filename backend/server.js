@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const blogRoutes = require("./routes/blogRoutes");
 const errorHandler = require("./middleware/errorHandler");
+const cors = require("cors");
 
 // Load environment variables
 dotenv.config();
@@ -12,7 +13,7 @@ connectDB();
 
 // Initialize the app
 const app = express();
-
+app.use(cors());
 // Middleware
 app.use(express.json());
 
